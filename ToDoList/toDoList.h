@@ -7,6 +7,8 @@
 
 #include <vector>
 #include "task.h"
+#ifndef toDoList_h
+#define toDoList_h
 
 class ToDoList {
 private:
@@ -21,4 +23,6 @@ public:
     void displayAllTasks();
     void saveToFile();
     void loadFromFile();
-}
+};
+
+#endif
