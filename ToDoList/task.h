@@ -22,6 +22,7 @@ public:
     void markComplete();
     void editTask(std::string newTitle, std::string newDescription, std::string newDueDate);
     void displayTask();
+    int getId();
 };
 
 #endif

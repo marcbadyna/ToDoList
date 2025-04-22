@@ -29,3 +29,7 @@ void Task::displayTask() {
     std::cout << "Status: " << (isCompleted ? "Completed" : "Incomplete") << std::endl;
     std::cout << std::endl;
 }
+
+int Task::getId() {
+    return id;
+}

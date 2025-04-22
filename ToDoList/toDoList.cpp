@@ -28,3 +28,19 @@ void ToDoList::addTask() {
     
     std::cout << "Task added!\n";
 }
+
+void ToDoList::removeTask() {
+    int id;
+    std::cout << "Enter task ID to remove: ";
+    std::cin >> id;
+    std::cin.ignore();
+    
+    for (auto it = tasks.begin(); it != tasks.end(); ++it) {
+        if (it->getId() == id) {
+            tasks.erase(it);
+            std::cout << "Task removed.\n";
+            return;
+        }
+    }
+    std::cout << "Task not found.\n";
+}
