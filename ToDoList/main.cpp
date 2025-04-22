@@ -33,12 +33,16 @@ int main() {
                 break;
             case 2:
                 todo.displayAllTasks();
+                break;
             case 3:
                 todo.updateTask();
+                break;
             case 4:
                 todo.removeTask();
+                break;
             case 5:
                 todo.markTaskComplete();
+                break;
             case 6:
                 std::cout << "Exiting...\n";
                 break;
