@@ -111,3 +111,31 @@ void ToDoList::saveToFile() const {
     outFile.close();
     std::cout << "Tasks saved to file.\n";
 }
+
+void ToDoList::loadFromFile() {
+    std::ifstream inFile("tasks.txt");
+    
+    tasks.clear();
+    nextId = 1;
+    
+    int id;std::string title, description, dueDate;
+    bool isCompleted;
+    
+    while (inFile >> id) {
+        inFile.ignore();
+        std::getline(inFile, title);
+        std::getline(inFile, description);
+        std::getline(inFile, dueDate);
+        inFile >> isCompleted;
+        inFile.ignore();
+        
+        Task task(id, title, description, dueDate);
+        if (isCompleted) task.markComplete();
+        
+        tasks.push_back(task);
+        if (id >= nextId) nextId = id + 1;
+    }
+    
+    inFile.close();
+    std::cout << "Tasks loaded from file.\n";
+}
