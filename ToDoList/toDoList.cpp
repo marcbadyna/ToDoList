@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "toDoList.h"
+#include <fstream>
 
 ToDoList::ToDoList() : nextId(1) {}
 
@@ -43,4 +44,70 @@ void ToDoList::removeTask() {
         }
     }
     std::cout << "Task not found.\n";
+}
+
+void ToDoList::updateTask() {
+    int id;
+    std::cout << "Enter task ID to update: ";
+    std::cin >> id;
+    std::cin.ignore();
+    
+    for (Task& task : tasks) {
+        if (task.getId() == id) {
+            std::string title, description, dueDate;
+            
+            std::cout << "New title: ";
+            std::getline(std::cin, title);
+            std::cout << "New description: ";
+            std::getline(std::cin, description);
+            std::cout << "New due date: ";
+            std::getline(std::cin, dueDate);
+            
+            task.editTask(title, description, dueDate);
+            std::cout << "Task updated.\n";
+            return;
+        }
+    }
+    std::cout << "Task not found.\n";
+}
+
+void ToDoList::markTaskComplete() {
+    int id;
+    std::cout << "Enter task ID to mark as complete: ";
+    std::cin >> id;
+    std::cin.ignore();
+    
+    for (Task& task : tasks) {
+        if (task.getId() == id) {
+            task.markComplete();
+            std::cout << "Task marked as complete.\n";
+            return;
+        }
+    }
+    std::cout << "Task not found.\n";
+}
+
+void ToDoList::displayAllTasks() const {
+    if (tasks.empty()) {
+        std::cout << "No tasks to display.\n";
+        return;
+    }
+    
+    for (const Task& task : tasks) {
+        task.displayTask();
+    }
+}
+
+void ToDoList::saveToFile() const {
+    std::ofstream outFile("tasks.txt");
+    
+    for (const Task& task : tasks) {
+        outFile << task.getId() << "\n"
+                << task.getTitle() << "\n"
+                << task.getDescription() << "\n"
+                << task.getDueDate() << "\n"
+        << task.isTaskCompleted() << "\n";
+    }
+    outFile.close();
+    std::cout << "Tasks saved to file.\n";
 }

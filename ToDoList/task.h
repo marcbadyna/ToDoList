@@ -21,8 +21,12 @@ public:
     Task(int id, std::string title, std::string description, std::string dueDate);
     void markComplete();
     void editTask(std::string newTitle, std::string newDescription, std::string newDueDate);
-    void displayTask();
-    int getId();
+    void displayTask() const;
+    int getId() const;
+    std::string getTitle() const;
+    std::string getDescription() const;
+    std::string getDueDate() const;
+    bool isTaskCompleted() const;
 };
 
 #endif

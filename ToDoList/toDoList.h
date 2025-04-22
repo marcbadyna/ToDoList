@@ -20,8 +20,8 @@ public:
     void removeTask();
     void updateTask();
     void markTaskComplete();
-    void displayAllTasks();
-    void saveToFile();
+    void displayAllTasks() const;
+    void saveToFile() const;
     void loadFromFile();
 };
 

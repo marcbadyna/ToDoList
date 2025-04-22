@@ -21,7 +21,7 @@ void Task::editTask(std::string newTitle, std::string newDescription, std::strin
     dueDate = newDueDate;
 }
 
-void Task::displayTask() {
+void Task::displayTask() const {
     std::cout << "Task ID: " << id << std::endl;
     std::cout << "Title: " << title << std::endl;
     std::cout << "Description: " << description << std::endl;
@@ -30,6 +30,22 @@ void Task::displayTask() {
     std::cout << std::endl;
 }
 
-int Task::getId() {
+int Task::getId() const {
     return id;
+}
+
+std::string Task::getTitle() const {
+    return title;
+}
+
+std::string Task::getDescription() const {
+    return description;
+}
+
+std::string Task::getDueDate() const {
+    return dueDate;
+}
+
+bool Task::isTaskCompleted() const {
+    return isCompleted;
 }
