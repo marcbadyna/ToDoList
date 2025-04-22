@@ -7,6 +7,7 @@
 
 #ifndef task_h
 #define task_h
+#include <string>
 
 class Task {
 private:
